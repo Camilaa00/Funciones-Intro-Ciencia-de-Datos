@@ -224,16 +224,24 @@ def percentil(p, lista):
   """
   Esta función....
   """
-  lista.sort()
-  n = len(lista)
+  lista_ordenada = lista.sort()
+  n = len(lista_ordenada)
+
+  # Para casos especiales:
+  if p <= 0:
+        return lista_ordenada[0]
+    if p >= 100:
+        return lista_ordenada[-1]
 
   k = (p / 100) * (n - 1)
   f = int(k)
   c = k - f
+      
   if (f + 1) < n:
-    return (lista[f] + c * (lista[f + 1] - lista[f]))
+        return lista_ordenada[f] + c * (lista_ordenada[f + 1] - lista_ordenada[f])
   else:
-    return lista[f]
+        return lista_ordenada[f]
+
 
 
 
