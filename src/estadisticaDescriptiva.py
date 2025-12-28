@@ -177,7 +177,7 @@ Q1 = mediana(mitad_inferior)
 
 # Cuartil 3:
 if n % 2 == 0:
-        mitad_superior = num_ordenados[n//2:]
+  mitad_superior = num_ordenados[n//2:]
 else:
   mitad_superior = num_ordenados[n//2+1:]
   Q3 = mediana(mitad_superior)
