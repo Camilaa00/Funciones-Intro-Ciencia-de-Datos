@@ -7,11 +7,11 @@ def promedio(lista):
   La función 'promedio' calcula el promedio de una lista de números.
   Parámetros
   -------------
-  lista: lista (argumento de entrada de la función)
+  lista: lista 
 
   Qué retorna?
   --------------
-  Promedio: float (promedio de los números de la lista)
+  Promedio: promedio de los números de la lista [float]
   """
   nueva_lista = []
   for i in lista:
@@ -26,7 +26,7 @@ def mediana(lista):
 
   Parámetros:
   --------------
-  lista: lista de entrada. (números)
+  lista: lista de entrada. [list]
 
   Qué retorna?
   --------------
@@ -36,7 +36,7 @@ def mediana(lista):
   if len(lista) == 0:
     return 0
 
-  lista_orenada = sorted(lista)
+  lista_ordenada = sorted(lista)
   n = len(lista_ordenada)
 
   if n % 2 == 1:
@@ -78,7 +78,7 @@ def rango(lista):
 
   Parámetros:
   --------------
-  lista: lista de números (int o float)
+  lista: lista de números [list]
 
   Qué retorna?
   --------------
@@ -95,7 +95,7 @@ def varianza(lista, tipo="poblacional"):
 
   Parámeteros:
   -----------------
-  lista: lista de números
+  lista: lista de números [list]
   tipo: string (es opcional. Tipo de varianza: "poblacional" o "muestral")
 
   Qué retorna?
@@ -121,7 +121,7 @@ def desviacion_estandar(lista, tipo="poblacional"):
 
   Parámetros:
   --------------
-  lista: lista de números.
+  lista: lista de números. [list]
   tipo: string (es opcional. Tipo de varianza: "poblacional" o "muestral")
 
   Qué retorna?
@@ -146,6 +146,80 @@ def frecuencia(lista):
   for i in lista:
     frecuencias[i] = frecuencias.get(i, 0) + 1
   return frecuencias
+
+def cuartiles(lista):
+  """
+  La función 'cuartiles' calcula los cuartiles Q1, Q2 (mediana) y Q3 de una lista de números. 
+  También elimina valores NaN e infinitos.
+
+  Parámetros:
+  ------------
+  lista: list
+    Lista de valores numéricos.
+
+  Qué retorna?
+  ----------------
+  tuple
+      (Q1, Q2, Q3)
+  """
+  num_ordenados = sorted(lista)
+  n = len(num_ordenados)
+
+Q2 = mediana(num_ordenados)
+
+# Cuartil 1:
+if n % 2 == 0:
+  mitad_inferior = num_ordenados[:n // 2]
+else:
+  mitad_inferior = num_ordenados[:n // 2]
+
+Q1 = mediana(mitad_inferior)
+
+# Cuartil 3:
+if n % 2 == 0:
+        mitad_superior = num_ordenados[n//2:]
+    else:
+        mitad_superior = num_ordenados[n//2+1:]
+    Q3 = mediana(mitad_superior)
+    
+    return Q1, Q2, Q3
+
+def rango_intercuartilico(lista):
+  """
+  Esta función calcula el rango intercuartílico (IQR = Q3 - Q1).
+
+  Parámetros:
+  -------------
+  lista: list
+    Lista de valores numéricos.
+
+  Qué retorna?
+  -------------
+  float
+      IQR
+  """
+  Q1, _, Q3 = cuartiles(lista)
+  return Q3 - Q1
+
+def mediana_desv_abs(lista):
+  """
+  Esta función calcula la Mediana de las Desviaciones Absolutas.
+
+  Parámetros:
+  -------------
+  lista: list
+    Lista de valores numéricos.
+
+  Qué retorna?
+  -------------
+  float
+      MAD
+  """
+  med = mediana(lista)
+  std_abs = [abs(x - med) for i in lista]
+  return mediana(std_abs)
+
+
   
 
 
