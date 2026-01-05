@@ -7,11 +7,12 @@ def promedio(lista):
   La función 'promedio' calcula el promedio de una lista de números.
   Parámetros
   -------------
-  lista: lista 
+  lista: [list] 
 
   Qué retorna?
   --------------
-  Promedio: promedio de los números de la lista [float]
+  Promedio: [float]
+    (Promedio de los números de la lista) 
   """
   nueva_lista = []
   for i in lista:
@@ -26,11 +27,13 @@ def mediana(lista):
 
   Parámetros:
   --------------
-  lista: lista de entrada. [list]
+  lista: [list]
+    (lista de entrada)
 
   Qué retorna?
   --------------
-  mediana: float (mediana de los números de la lista)
+  mediana: [float] 
+    (mediana de los números de la lista)
   """
   
   if len(lista) == 0:
@@ -52,7 +55,8 @@ def moda(lista):
 
   Parámetros:
   --------------
-  lista: lista de entrada (cualquier tipo de dato)
+  lista: [cualquier tipo de dato]
+    (Lista de entrada)
 
   Qué retorna?
   --------------
@@ -78,11 +82,11 @@ def rango(lista):
 
   Parámetros:
   --------------
-  lista: lista de números [list]
-
+  lista: [list]
+    (lista de números)
   Qué retorna?
   --------------
-  rango: float
+  rango: [float]
   """
   if len(lista) == 0:
     return 0
@@ -95,12 +99,13 @@ def varianza(lista, tipo="poblacional"):
 
   Parámeteros:
   -----------------
-  lista: lista de números [list]
+  lista: [list]
+    (lista de números)
   tipo: string (es opcional. Tipo de varianza: "poblacional" o "muestral")
 
   Qué retorna?
   --------------
-  varianza: float
+  varianza: [float]
   """
   if len(lista) < 2:
     return 0
@@ -121,12 +126,13 @@ def desviacion_estandar(lista, tipo="poblacional"):
 
   Parámetros:
   --------------
-  lista: lista de números. [list]
+  lista: [list]
+    (lista de números)
   tipo: string (es opcional. Tipo de varianza: "poblacional" o "muestral")
 
   Qué retorna?
   --------------
-  Desviación estándar: float
+  Desviación estándar: [float]
   """
   return math.sqrt(varianza(lista, tipo))
 
@@ -154,8 +160,8 @@ def cuartiles(lista):
 
   Parámetros:
   ------------
-  lista: list
-    Lista de valores numéricos.
+  lista: [list]
+    (Lista de valores numéricos)
 
   Qué retorna?
   ----------------
@@ -191,8 +197,8 @@ def rango_intercuartilico(lista):
 
   Parámetros:
   -------------
-  lista: list
-    Lista de valores numéricos.
+  lista: [list]
+    (Lista de valores numéricos)
 
   Qué retorna?
   -------------
@@ -208,8 +214,8 @@ def mediana_desv_abs(lista):
 
   Parámetros:
   -------------
-  lista: list
-    Lista de valores numéricos.
+  lista: [list]
+    (Lista de valores numéricos)
 
   Qué retorna?
   -------------
@@ -227,10 +233,10 @@ def percentil(p, lista):
     
   Parámetros:
   -----------
-  p : float
-      Percentil deseado (0 a 100).
-  lista : list
-      Lista de valores numéricos.
+  p : [float]
+      (Percentil deseado (0 a 100))
+  lista : [list]
+      (Lista de valores numéricos)
         
   Retorna:
   --------
@@ -257,6 +263,22 @@ def percentil(p, lista):
 
 def correlacion(x, y):
   """
+  Calcula el coeficiente de correlación entre dos variables.
+
+  Parámetros:
+  ------------
+  x : list[float]
+      Primera variable (lista de valores numéricos).
+  y : list[float]
+      Segunda variable (lista de valores numéricos).
+      Debe tener la misma longitud que x.
+
+  Qué retorna?
+  -------------
+  float or None
+      - Coeficiente de correlación de Pearson (entre -1 y 1).
+      - 0 si alguna variable tiene varianza cero (todos los valores iguales).
+      - None si las listas tienen longitudes diferentes.
   """
   if len(x) != len(y):
     return None
@@ -288,6 +310,20 @@ def correlacion(x, y):
 
 def covarianza(x, y):
   """
+  Calcula la covarianza entre dos variables.
+
+  Parámetros:
+  ------------
+  x : list[float]
+      Primera variable (lista de valores numéricos).
+  y : list[float]
+      Segunda variable (lista de valores numéricos).
+      Debe tener la misma longitud que x.
+        
+  Retorna:
+  --------
+  float
+      Covarianza entre x e y.  
   """
    
   if len(x) != len(y):
